@@ -1,4 +1,5 @@
 function createMarkup(arr) {
+  if (!Array.isArray(arr)) return ""; 
   return arr
     .map(
       ({ image, category: { name: categoryName }, name, description, price }) =>
@@ -13,7 +14,7 @@ function createMarkup(arr) {
             <p class="product-price">${price} грн</p>
             <button class="product-card-btn" type="button" aria-label="Open product details">
               <svg class="product-card-svg" width="24" height="24">
-                <use href="/img/sprite.svg#icon-arrow_outward">
+                <use href="./img/sprite.svg#icon-arrow_outward">
                 </use>
               </svg>
             </button>
