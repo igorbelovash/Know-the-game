@@ -8,8 +8,12 @@ const modalContainer = document.querySelector('.modal-container');
 
 form.addEventListener('submit', handleSubmit);
 closeBtn.addEventListener('click', handleClick);
+modalContainer.addEventListener('click', handleBackdropClick);
+document.addEventListener('keydown', handleEscKey);
 
 let dessertsId = null;
+
+document.body.classList.add('no-scroll');
 
 async function handleSubmit(event) {
   event.preventDefault();
@@ -49,4 +53,22 @@ async function handleSubmit(event) {
 
 function handleClick() {
   modalContainer.classList.add('is-hidden');
+  document.body.classList.remove('no-scroll');
+}
+
+function handleEscKey(event) {
+  if (
+    event.key === 'Escape' &&
+    !modalContainer.classList.contains('is-hidden')
+  ) {
+    modalContainer.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
+  }
+}
+
+function handleBackdropClick(event) {
+  if (event.target === modalContainer) {
+    modalContainer.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
+  }
 }

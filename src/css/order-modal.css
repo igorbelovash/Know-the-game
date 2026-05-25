@@ -121,6 +121,10 @@ textarea:not(:focus):invalid:not(:placeholder-shown) {
   display: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
   .modal-box {
     padding: 64px 32px;
