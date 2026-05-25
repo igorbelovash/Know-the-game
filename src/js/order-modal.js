@@ -3,8 +3,11 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.modal-form');
+const closeBtn = document.querySelector('.modal-close');
+const modalContainer = document.querySelector('.modal-container');
 
 form.addEventListener('submit', handleSubmit);
+closeBtn.addEventListener('click', handleClick);
 
 let dessertsId = null;
 
@@ -42,4 +45,8 @@ async function handleSubmit(event) {
       position: 'topRight',
     });
   }
+}
+
+function handleClick() {
+  modalContainer.classList.add('is-hidden');
 }
