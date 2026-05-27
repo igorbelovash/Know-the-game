@@ -9,7 +9,7 @@ import{a as v,S as P,P as T,N as I,i as m,A as ie}from"./assets/vendor-BuOEm_2k.
             <p class="product-price">${oe} грн</p>
             <button class="product-card-btn" type="button" aria-label="Open product details">
               <svg class="product-card-svg" width="24" height="24">
-                <use href="/img/sprite.svg#icon-arrow_outward">
+                <use href="./img/sprite.svg#icon-arrow_outward">
                 </use>
               </svg>
             </button>
