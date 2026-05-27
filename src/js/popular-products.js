@@ -6,6 +6,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'izitoast/dist/css/iziToast.min.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { handleDessertClick } from './dessert-details';
 
 const BASE_URL = 'https://deserts-store.b.goit.study/api/';
 const END_POINT = 'desserts';
@@ -49,6 +50,10 @@ function getProductId(product) {
   return product.id || product._id;
 }
 
+if (productsContainer) {
+  productsContainer.addEventListener('click', handleDessertClick)
+}
+
 function createMarkup(arr, options = {}) {
   if (!Array.isArray(arr)) return '';
 
@@ -70,7 +75,7 @@ function createMarkup(arr, options = {}) {
           <p class="product-description">${description}</p>
           <div class="product-card-bottom">
             <p class="product-price">${price} грн</p>
-            <button class="product-card-btn" type="button" aria-label="Open product details">
+            <button class="product-card-btn dessert-card__btn" type="button" aria-label="Open product details" data-id="${productId}">
               <svg class="product-card-svg" width="24" height="24">
                 <use href="./img/sprite.svg#icon-arrow_outward">
                 </use>
@@ -133,6 +138,7 @@ async function getPopularProducts() {
     showError(error.message || 'Помилка завантаження популярних товарів');
   }
 }
+
 
 getPopularProducts();
 

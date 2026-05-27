@@ -1,6 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { getCategories, getDesserts } from './services/api/api.js';
+import { handleDessertClick } from './dessert-details.js';
 
 let state = {
   page: 1,
@@ -22,6 +23,8 @@ const els = {
 const trigger = els.customSelect?.querySelector('.custom-select__trigger');
 const dropdown = els.customSelect?.querySelector('.custom-select__dropdown');
 const label = els.customSelect?.querySelector('.custom-select__label');
+const dessertContainer = document.querySelector('.js-dessert-grid');
+
 
 function escapeHtml(str) {
   return String(str)
@@ -63,7 +66,7 @@ function renderDessertCard(dessert) {
         </div>
         <div class="dessert-card__footer">
           <span class="dessert-card__price">${Number(dessert.price).toFixed(0)} грн</span>
-          <button type="button" class="dessert-card__btn" aria-label="Відкрити ${escapeHtml(dessert.name)}">
+          <button type="button" data-id="${dessert._id}" class="dessert-card__btn" aria-label="Відкрити ${escapeHtml(dessert.name)}">
             <svg width="20" height="20">
               <use href="/img/sprite.svg#icon-arrow_outward"></use>
             </svg>
@@ -211,6 +214,10 @@ els.loadMore?.addEventListener('click', () => {
   state.page += 1;
   loadDesserts();
 });
+
+if (dessertContainer) {
+  dessertContainer.addEventListener('click', handleDessertClick);
+}
 
 (async function init() {
   await loadCategories();
